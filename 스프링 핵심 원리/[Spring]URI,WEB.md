@@ -18,3 +18,18 @@ URL(Resource Locate), URN(Resource Name) = URI
 * URN - Name : 리소스에 이름을 부여
 * 위치는 변할 수 있지만, 이름은 변하지 않는다.
 * URN 이름만으로 실제 리소스를 찾을 수 있는 방법이 보편화 되지 않음
+
+## 웹 브라우저 요청 흐름
+### HTTP 메시지 전송
+1. 웹 브라우저가 HTTP 메시지 생성
+2. SOCKET 라이브러리를 통해 전달
+   -A: TCP/IP 연결(IP, PORT)
+   -B: 데이터 전달
+3. TCP/IP 패킷 생성, HTTP 메시지 포함
+
+### [HTTP]
+* 모든 것이 HTTP
+* 클라이언트 서버 구조
+* Stateful, Stateless
+* 비연결성(connectionless)
+* HTTP 메시지
