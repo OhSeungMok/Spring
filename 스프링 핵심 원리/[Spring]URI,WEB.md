@@ -91,3 +91,32 @@ HTTP 메시지에 모든 것을 전송
 ### 스테이스리스를 기억하자
 서버 개발자들이 어려워하는 업무
 * 정말 같은 시간에 딱 맞추어 발생하는 대용량 트래픽
+
+## HTTP
+시작 라인 요청 메시지
+* start-line = request-line / status-line
+* request-line = method SP(공백) request-target SP HTTP-version CRLF(엔터)
+```
+GET/search?q=hello&hi=ko HTTp/1.1
+```
+* HTTP 메서드 (GET: 조회)
+* 요청 대상 (/search?q=hello&hi=ko)
+* HTTP Version
+
+### HTTP 메서드
+* 종류 : GET, POST, DELETE...
+* 서버가 수행해야할 동작 지정
+  * GET : 리소스 조회
+  * POST : 요청 내역 처리
+ 
+### 요청 대상
+* absolute-path[?query] (절대경로[?쿼리])
+* 절대경로="/"로 시작하는 경로
+
+### 응답 메시지
+* HTTP 버전
+* HTTP 상태 코드 : 요청 성공, 실패를 나타냄
+  * 200 : 성공
+  * 400 : 클라이언트 요청 오류
+  * 500 : 서버 내부 오류
+* 이유 문구 : 사람이 이해할수 있는 짧은 상태 코드 설명 글
