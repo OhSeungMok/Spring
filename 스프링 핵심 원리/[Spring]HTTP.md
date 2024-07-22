@@ -140,3 +140,14 @@ POST 전송 - 저장, GET 전송 - 저장
 * GET : 조회, 쿼리 파라미터로 데이터 전달
 * Content-Type : application/json을 주로 사용(사실상 표준0
   * TEXT, XML, JSON 등등
+
+## HTTP API 설계 예시
+* HTTP API - 컬렉션
+  * POST기반 등록
+  * 회원관리 API 제공
+* HTTP API - 스토어
+  * PUT기반 등록
+  * 정적 컨텐츠 관리, 원격 파일 관리
+* HTML FORM 사용
+  * 웹 페이지 회원 관리
+  * GET, POST만 지원
