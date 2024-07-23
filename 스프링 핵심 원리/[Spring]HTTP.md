@@ -211,18 +211,71 @@ PUT - 신규 자원 등록 특징
   * HTTP 메서드로 해결하기 애매한 경우 사용(HTTP API 포함)
 
 ### 정리
-* 문서(DOCUMENT)
+* `문서(DOCUMENT)`
   * 단일 개념(파일 하나, 객체 인스턴스, 데이터베이스 ROW)
   * 예) /members/100, /files/star.jpg
-* 컬렉션(COLLECTION)
+* `컬렉션(COLLECTION)`
   * 서버가  관리하는 리소스 디렉터리
   * 서버가 리소스의 URI를 생성하고 관리
   * 예) /members
-* 스토어(STORE)
+* `스토어(STORE)`
   * 클라이언트가 관리하는 자원 저장소
   * 클라이언트가 리소스의 URI를 알고 관리
   * 예) /files
-* 컨트롤러(CONTROLLER), 컨트롤 URI
+*` 컨트롤러(CONTROLLER)`, `컨트롤 URI`
   * 문서, 컬렉션, 스토어로 해결하기 어려운 추가 프로세스 실행
   * 동사를 직접 사용
   * 예) /members/{id}/delete
+
+## HTTP 상태코드
+### 상태코드
+클라이언트가 보낸 요청의 처리 상태를 응답에서 알려주는 기능
+* 1XX (information): 요청이 수신되어 처리중
+* 2XX (successful): 요청 정상 처리
+* 3xx (redirection): 요청을 완료하려면 추가행동이 필요
+* 4xx (client error): 클라이언트 오류ㅡ 잘못된 문법등으로 서버가 요청을 수행할 수 없음
+* 5xx (server error): 서버 오류, 서버가 정상 요청을 처리하지 못함
+
+만약 모르는 상태 코드가 나타나면?
+* 클라이언트가 인식할 수 없는 상태코드를 서버가 반환하면?
+* 클라이언트는 상위 상태코드로 해석해서 처리
+* 미래에 새로운 상태 코드가 추가되어도 클라이언트를 변경하지 않아도 됨
+* 예)
+  * 299??? -> 2xx(successful)
+  * 451??? -> 4xx(client error)
+  * 599??? -> 5xx(server error)
+
+### 1xx(Information)
+요청이 수신되어 처리중
+* 거의 사용하지 않으므로 생략
+
+### 2XX (Successful)
+요청 정상 처리
+* 200 ok
+* 201 created 요청 성공해서 새로운 리소스가 생성됨
+* 202 accepted 요청이 접수되었으나 처리가 완료되지 않았음
+* 204 no content 서버가 요청을 성공적으로 수행했지만, 응답 페이로드 본문에 보낼 데이터가 없음
+
+### 3xx (Redirection)
+요청을 완료하려면 추가행동이 필요
+* 300 Multiple Choices
+* 301 Moved Permanently
+* 302 Found
+* 303 See Other
+* 304 Not modified
+* 307 Temporary Redirect
+* 308 Permanent Redirect
+
+### 리다이렉션 이해
+* 웹 브라우저는 3xx 응답의 결과에 Location 헤더가 있으면, Location 위치로 자동 이동(리다이렉트)
+
+종류
+* 영구 리다이렉션 - 특정 리소스의 URI가 영구적으로 이동 (301, 308)
+  * 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
+  * 예) /members -> /users
+  * 예) /event -> /new-event
+* 일시 리다이렉션 - 일시적인 변경
+  * 주문 완료 후 주문 내역 화면으로 이동
+  * PRG : Post/Redirect/Get
+* 특수 리다이렉션
+  * 결과 대신 캐시를 사용
