@@ -274,8 +274,27 @@ PUT - 신규 자원 등록 특징
   * 원래의 URL를 사용X, 검색 엔진 등에서도 변경 인지
   * 예) /members -> /users
   * 예) /event -> /new-event
-* 일시 리다이렉션 - 일시적인 변경
+* 일시 리다이렉션 - 일시적인 변경 (302 found, 307 Temporary Redirect, 303 See Other)
   * 주문 완료 후 주문 내역 화면으로 이동
   * PRG : Post/Redirect/Get
 * 특수 리다이렉션
   * 결과 대신 캐시를 사용
+
+### 4xx (Client Error)
+클라이언트 오류
+* 클라이언트의 요청에  잘못된 문법등으로서버가 요청을 수행할 수 없음
+* 오류의 원인이 클라이언트에 있음
+* 클라이언트가 이미 잘못된 요청, 데이터를 보내고 있기 때문에, 똑같은 재시도가 실패함
+  <br>
+* 400 Bad Request 클라이언트가 잘못된 요청을 해서 서버가 요청을 처리할 수 없음
+* 401 Unauthorized 클라이언트가 해당 리소스에 대한 인증이 필요함
+* 403 Forbidden 서버가 요청을 이해했지만 승인을 거부함
+* 404 Not found 요청 리소스를 찾을 수 없음
+
+### 5xx (Server Error) 
+서버 오류
+* 서버 문제로 오류 발생
+* 서버에 문제가 있기 때문에 재시도 하면 성공할 수도 있음(복구가 되거나 등등)
+  <br>
+* 500 Internal Server Error 서버 오류
+* 503 Service Unavailable 서비스 이용 불가
